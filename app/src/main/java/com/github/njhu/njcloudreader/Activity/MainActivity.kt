@@ -7,16 +7,25 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.view.GravityCompat
 import com.github.njhu.njcloudreader.Base.BaseActivity
+import com.github.njhu.njcloudreader.Base.BaseFragment
 import com.github.njhu.njcloudreader.R
+import com.github.njhu.njcloudreader.fragment.Discovery
+import com.github.njhu.njcloudreader.fragment.Home
+import com.github.njhu.njcloudreader.fragment.Music
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_header.*
 
 class MainActivity : BaseActivity() {
 
+    val homeFragment = Home()
+    val musicFragment = Music()
+    val discoveryFragment = Discovery()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         addActions()
+        replaceFragment(homeFragment)
     }
     private fun addActions() {
         val menu = findViewById<FrameLayout>(R.id.nav_menu_button)
@@ -36,19 +45,28 @@ class MainActivity : BaseActivity() {
             musicImageView.setImageResource(R.drawable.titlebar_music_selected)
             musicIconImageView.setImageResource(R.drawable.titlebar_discover_normal)
             peopleImageView.setImageResource(R.drawable.titlebar_friends_normal)
+            replaceFragment(homeFragment)
         }
         musicIcon.setOnClickListener {
             musicImageView.setImageResource(R.drawable.titlebar_music_normal)
             musicIconImageView.setImageResource(R.drawable.titlebar_discover_selected)
             peopleImageView.setImageResource(R.drawable.titlebar_friends_normal)
+            replaceFragment(musicFragment)
         }
         people.setOnClickListener {
             musicImageView.setImageResource(R.drawable.titlebar_music_normal)
             musicIconImageView.setImageResource(R.drawable.titlebar_discover_normal)
             peopleImageView.setImageResource(R.drawable.titlebar_friends_selected)
+            replaceFragment(discoveryFragment)
         }
         search.setOnClickListener {
 
         }
+    }
+    private fun replaceFragment(fragment: BaseFragment) {
+        val fragmentManager = supportFragmentManager
+        val transition = fragmentManager.beginTransaction()
+        transition.replace(R.id.content_frame, fragment)
+        transition.commit()
     }
 }

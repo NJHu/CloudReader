@@ -13,6 +13,6 @@ class Music: BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.home_fragment, container, false)
+        return inflater.inflate(R.layout.music_fragment, container, false)
     }
 }

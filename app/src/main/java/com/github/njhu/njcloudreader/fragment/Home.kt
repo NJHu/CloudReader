@@ -1,5 +1,6 @@
 package com.github.njhu.njcloudreader.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,5 +17,17 @@ class Home: BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.home_fragment, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        replaceFragment(HomeContent())
+    }
+
+    private fun replaceFragment(fragment: BaseFragment) {
+        val fragmentManager = childFragmentManager
+        val transition = fragmentManager.beginTransaction()
+        transition.replace(R.id.content_page, fragment)
+        transition.commit()
     }
 }
