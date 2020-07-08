@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.ImageView
+import androidx.core.view.GravityCompat
 import com.github.njhu.njcloudreader.Base.BaseActivity
 import com.github.njhu.njcloudreader.R
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_header.*
 
 class MainActivity : BaseActivity() {
 
@@ -27,7 +30,7 @@ class MainActivity : BaseActivity() {
         val peopleImageView = findViewById<ImageView>(R.id.nav_people_button_img)
 
         menu.setOnClickListener {
-
+            draw_layout.openDrawer(GravityCompat.START)
         }
         music.setOnClickListener {
             musicImageView.setImageResource(R.drawable.titlebar_music_selected)
