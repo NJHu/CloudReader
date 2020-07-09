@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.github.njhu.njcloudreader.Base.BaseActivity
 import com.github.njhu.njcloudreader.Base.BaseFragment
 import com.github.njhu.njcloudreader.R
@@ -20,6 +21,7 @@ class MainActivity : BaseActivity() {
     val homeFragment = Home()
     val musicFragment = Music()
     val discoveryFragment = Discovery()
+    var currentFragment: Fragment = Fragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +68,16 @@ class MainActivity : BaseActivity() {
     private fun replaceFragment(fragment: BaseFragment) {
         val fragmentManager = supportFragmentManager
         val transition = fragmentManager.beginTransaction()
-        transition.replace(R.id.content_frame, fragment)
-        transition.commit()
+
+        if (currentFragment != fragment) {
+            transition.hide(currentFragment)
+            currentFragment = fragment
+            if (!fragment.isAdded) {
+                transition.add(R.id.content_frame, fragment)
+                transition.show(fragment).commit()
+            } else {
+                transition.show(fragment).commit()
+            }
+        }
     }
 }
