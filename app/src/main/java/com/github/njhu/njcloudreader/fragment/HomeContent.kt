@@ -1,5 +1,6 @@
 package com.github.njhu.njcloudreader.fragment
 
+import android.app.Service
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +9,7 @@ import android.view.ViewGroup
 import com.github.njhu.njcloudreader.Base.BaseFragment
 import com.github.njhu.njcloudreader.Bean.Article
 import com.github.njhu.njcloudreader.R
-import com.github.njhu.njcloudreader.Tool.AppNetwork
+import com.github.njhu.njcloudreader.Tool.ServiceCreator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +27,7 @@ class HomeContent: BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        AppNetwork.getAppService().getArticleList().enqueue(object : Callback<List<Article>> {
+        ServiceCreator.createAppService().getArticleList().enqueue(object : Callback<List<Article>> {
             override fun onResponse(call: Call<List<Article>>, response: Response<List<Article>>) {
                 val list = response.body()
                 if (list != null) {
