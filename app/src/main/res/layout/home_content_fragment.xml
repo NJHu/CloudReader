@@ -3,11 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <FrameLayout
+    <com.github.njhu.njcloudreader.Banner.HomeBanner
+        android:id="@+id/home_banner"
         android:background="#F00"
         android:layout_width="match_parent"
         android:layout_height="150dp">
-    </FrameLayout>
+        <me.jingbin.sbanner.SBannerView
+            android:id="@+id/home_banner_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.github.njhu.njcloudreader.Banner.HomeBanner>
     <FrameLayout
         android:background="#ddd"
         android:layout_width="match_parent"

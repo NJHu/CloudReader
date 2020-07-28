@@ -8,4 +8,5 @@ import com.github.njhu.njcloudreader.Bean.Article as Article
 interface AppService {
     @GET("files/articleList.json")
     fun getArticleList(): Call<List<Article>>
+
 }
