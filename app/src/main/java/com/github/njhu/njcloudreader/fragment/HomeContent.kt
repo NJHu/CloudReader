@@ -33,7 +33,7 @@ class HomeContent: BaseFragment() {
     }
 
     private fun initViews(){
-        home_banner.setsBannerView(home_banner_view)
+        home_banner.setRecyclerView(banner_recycler_view)
     }
 
     private fun loadData() {
