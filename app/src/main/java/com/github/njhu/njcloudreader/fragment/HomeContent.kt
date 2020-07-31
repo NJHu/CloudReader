@@ -29,7 +29,6 @@ class HomeContent: BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         initViews()
     }
 

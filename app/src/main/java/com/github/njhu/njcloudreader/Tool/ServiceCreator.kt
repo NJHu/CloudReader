@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceCreator {
     private const val BASE_URL = "https://njhu.github.io/"
-    const val API_WAN_ANDROID = "https://www.wanandroid.com/"
+    private const val API_WAN_ANDROID = "https://www.wanandroid.com/"
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
